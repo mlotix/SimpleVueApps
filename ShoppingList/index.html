@@ -1,0 +1,89 @@
+<html lang="pl">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-sciale=1" />
+    <meta name="author" content="Michal Mlotowski" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+    <script src="https://kit.fontawesome.com/f0027eab06.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./style.css" />
+
+  </head>
+
+  <body>
+    <div class="container mt-5" id="app">
+      <div class="title">
+        <h1 class="text-primary"><i class="fas fa-shopping-basket"></i></h1>
+        <h2 id="list-title">{{title}} <i class="fas fa-pencil-alt ml-1 btn btn-primary" onclick="editTitle();"></i></h2>
+      </div>
+
+      <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6 add-item bg-primary">
+          <h3 id="add-title" class="text-white">Add new item:</h3>
+          <div class="input-group">
+            <input type="text" class="form-control"name="newItem" placeholder="Name" v-model="newItem.text"v-on:keyup.enter="addItem"><input type="number" class="form-control quan-input"name="newItemQuan" placeholder="Quantity" v-model="newItem.quantity"v-on:keyup.enter="addItem"><button class="btn btn-secondary btn-lg" v-on:click="addItem"><i class="fas fa-plus"></i></button>
+          </div>
+        </div>
+        <div class="col-md-3"></div>
+      </div>
+
+      <div class="container item-list">
+        <div class="row">
+          <div class="col-7">
+            Item
+          </div>
+          <div class="col-3">
+            Quantity
+            </div>
+            <div class="col-2"></div>
+          </div>
+        <div class="one-item row" v-for="(item, index) in items">
+          <div class="col-8 col-md-6 col-lg-8">
+            <div v-show="!item.editMode">
+              <label v-bind:class="{'bought':item.checked}"><input class="item-checkbox" type="checkbox" v-model="item.checked">{{item.text}}</label>
+            </div>
+            <div class="input-group" v-show="item.editMode">
+            <input type="text" class="form-control" name="EditedName" v-model="item.text"v-on:keyup.enter="saveItem(item)">
+              </div>
+          </div>
+          <div class="col-4 col-md-2 col-lg-1">
+            <p> {{item.quantity}} </p>
+          </div>
+          <div class="col-12 col-md-4 col-lg-3">
+            <div style="text-align:right;">
+              <i class="fas fa-angle-up btn btn-secondary" v-show="!item.editMode" v-on:click="addQuantity(item)"></i>
+              <i class="fas fa-angle-down btn btn-secondary" v-show="!item.editMode" v-on:click="dropQuantity(item)"></i>
+              <i class="fas fa-save btn btn-success" v-show="item.editMode" v-on:click="saveItem(item)"></i>
+              <i class="fas fa-pencil-alt ml-1 btn btn-primary" v-show="!item.editMode" v-on:click="turnOnEdit(item)"></i>
+              <i class="fas fa-trash btn btn-primary" v-on:click="removeItem(index)"></i>
+              </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="modal" id="title-edit">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Edit the title:</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <input type="text" class="form-control" v-model="title">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Save changes</button>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </body>
+    <script src="./script.js"></script>
+    <script></script>
+</html>
