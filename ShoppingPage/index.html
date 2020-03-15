@@ -1,0 +1,60 @@
+<html lang="pl">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="Michal Mlotowski" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+    <script src="https://kit.fontawesome.com/f0027eab06.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./style.css" />
+
+  </head>
+
+  <body>
+    <div class="container-fluid" id="productApp">
+      <nav class="navbar bg-secondary">
+        <a class="btn btn-lg btn-light cart-button float-right"><i class="fas fa-shopping-basket"></i>Cart({{cartValue}})</a>
+      </nav>
+      <section class="product-wrap">
+        <div class="row">
+          <div class="col-md-6 image-side">
+            <div class="image-wrap">
+              <img :alt="image[index].alt" :src="image[index].link" class="img-thumbnail"/>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <h1>{{ product }}</h1>
+            <p>
+              {{shortDesc}}
+            </p>
+            <h2 class="text-danger">$ {{ price }}</h2>
+            <p class="text-success" v-show="stock">
+              Produkt w magazynie
+            </p>
+            <p class="text-warning" v-show="!stock">
+              Produkt niedostepny
+            </p>
+            <button v-on:click="cartValue+=1" class="btn btn-lg btn-primary">Add to cart</button>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-3">
+            <h2>Attributes</h2>
+            <ul>
+              <li v-for="attr in attrs">{{attr}}</li>
+            </ul>
+          </div>
+          <div class="col-md-9">
+            <h2>Description</h2>
+            <p>
+                {{desc}}
+            </p>
+          </div>
+        </div>
+      </section>
+    </div>
+  </body>
+    <script src="./script.js"></script>
+    <script></script>
+</html>
