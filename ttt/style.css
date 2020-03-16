@@ -1,0 +1,72 @@
+body {
+  background-color: #AED6F1;
+}
+.tic-wrap {
+  max-width:500px;
+  padding: 20px;
+}
+.tic-square {
+  position: relative;
+  background-color: #85C1E9;
+  box-sizing: border-box;
+  width: 100%;
+  padding-top: 100%;
+  border-radius: 12px;
+  color:#2E4053;
+  border-right: 3px solid #5DADE2;
+  border-bottom: 3px solid #5DADE2;
+}
+.tic-inside {
+  display: flex;
+  position: absolute;
+  top:0;
+  left:0;
+  bottom:0;
+  right:0;
+  align-items: center;
+  justify-content: center;
+}
+.tic-value {
+  margin: 0;
+  text-align: center;
+  font-weight: bold;
+  font-size: 50px;
+}
+.tic-hover {
+  background-color: #5DADE2;
+}
+.tic-x{
+}
+.tic-o {
+}
+.tic-win{
+  background-color: #A3E4D7;
+  border-right: 3px solid #1ABC9C;
+  border-bottom: 3px solid #1ABC9C;
+}
+.tic-header {
+  border-right: 3px solid #5DADE2;
+  border-bottom: 3px solid #5DADE2;
+  background-color: #85C1E9;
+  margin: 3px;
+  width: 100%;
+  max-width: 600px;
+  min-height: 100px;
+  padding: 20px;
+  text-align: center;
+  border-radius: 12px;
+  margin-bottom: 25px;
+}
+.btn-custom {
+    border-radius: 12px;
+    border-right: 3px solid #D4E6F1;
+    border-bottom: 3px solid #D4E6F1;
+    background-color: #EBF5FB;
+    margin-top: 20px;
+}
+.btn-custom:hover {
+  background-color: #D4E6F1;
+}
+.col-4 {
+  padding:3px;
+}
